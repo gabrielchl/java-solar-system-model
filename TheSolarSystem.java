@@ -1,6 +1,9 @@
 import javax.swing.*;
 import java.awt.Color;
 
+/**
+ * Main class. Creates all solar objects and controls their movement.
+ */
 public class TheSolarSystem extends SolarSystem {
     public static int width = 1700;
     public static int height = 800;
@@ -11,12 +14,23 @@ public class TheSolarSystem extends SolarSystem {
 
     public static double solar_system_width = 4495.0;
 
+    /**
+     * Creates the one and only solar system. Sets global settings according to arguments.
+     *
+     * @param   args    user input arguments
+     */
     public static void main(String[] args) {
         TheSolarSystem our_solar_system = new TheSolarSystem(1700, 800);
     }
 
+    /**
+     * Creates all solar objects and controls their movement.
+     *
+     * @param   width   width of the window
+     * @param   height  height of the window
+     */
     public TheSolarSystem(int width, int height) {
-        super(width, height);
+        super(width, height); // apply onto super class's constructor
 
         /**JLabel label = new JLabel("test");
         label.setFont (label.getFont ().deriveFont (64.0f));
@@ -49,6 +63,8 @@ public class TheSolarSystem extends SolarSystem {
 
         Planet neptune = new Planet(this, 4495.0, 0.049244, "#2F73D4", 0.0060975);
 
+        // setup arrays for each type of solar object
+
         Planet[] planets = {mercury, venus, earth, mars, jupiter, saturn, uranus, neptune};
 
         Moon[] moons = {our_lovely_moon, io, europa, ganymede, callisto, titan};
@@ -58,7 +74,7 @@ public class TheSolarSystem extends SolarSystem {
             asteroids[i] = new Asteroid(this);
         }
 
-        while(true) {
+        while(true) { // main loop for the animation
             this.finishedDrawing();
 
             sun.move();

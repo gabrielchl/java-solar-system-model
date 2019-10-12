@@ -1,3 +1,6 @@
+/**
+ * Properties and methods for asteroids.
+ */
 public class Asteroid extends SolarObject {
     private SolarSystem ss;
     private double dist;
@@ -6,6 +9,13 @@ public class Asteroid extends SolarObject {
     private double dia;
     private String col;
 
+    /**
+     * Constructs the asteroid object.
+     * Upon construction, it will decide what type of asteroid will it be,
+     * and set its properties according to the type.
+     *
+     * @param   ss      the solar system the planet will be added to
+     */
     public Asteroid(SolarSystem ss) {
         this.ss = ss;
 
@@ -26,9 +36,12 @@ public class Asteroid extends SolarObject {
         }
 
         dia = 2;
-        col = "#444444";
+        col = "#444444"; // so that it's not hundreds of bright objects on the screen
     }
 
+    /**
+     * Triggers the planet to move 1 step foward
+     */
     public void move() {
         current_ang = calc_new_ang(current_ang, ang);
         ss.drawSolarObject(dist, current_ang, dia, col);
