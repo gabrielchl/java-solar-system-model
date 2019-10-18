@@ -25,14 +25,16 @@ public class Asteroid extends SolarObject {
             dist = calc_display_dist(Math.random() * 200 + 250) + 140;
             ang = Math.random() * 0.3 + 0.5;
             current_ang = Math.random() * 360;
-        } else if (asteroid_type < 0.85) { // greeks
-            dist = calc_display_dist(Math.random() * 200 + 720) + 140;
-            ang = 0.08403;
-            current_ang = Math.random() * 70 + 110;
         } else { // trojans
             dist = calc_display_dist(Math.random() * 200 + 720) + 140;
             ang = 0.08403;
             current_ang = Math.random() * 70;
+            if (current_ang < 20) current_ang += Math.random() * 20;
+            if (current_ang > 50) current_ang -= Math.random() * 20;
+        }
+
+        if (asteroid_type >= 0.7 && asteroid_type < 0.85) { // greeks
+            current_ang += 110;
         }
 
         dia = 2;

@@ -1,5 +1,5 @@
 import javax.swing.*;
-import java.awt.Color;
+import java.awt.*;
 
 /**
  * Main class. Creates all solar objects and controls their movement.
@@ -30,14 +30,8 @@ public class TheSolarSystem extends SolarSystem {
      * @param   height  height of the window
      */
     public TheSolarSystem(int width, int height) {
-        super(width, height); // apply onto super class's constructor
 
-        /**JLabel label = new JLabel("test");
-        label.setFont (label.getFont ().deriveFont (64.0f));
-        label.setForeground(Color.WHITE);
-        label.setHorizontalAlignment(SwingConstants.CENTER);
-        label.setVerticalAlignment(SwingConstants.CENTER);
-        add(label);**/
+        super(width, height); // apply onto super class's constructor
 
         Sun sun = new Sun(this, 0, 1.391, "#F79703");
 
