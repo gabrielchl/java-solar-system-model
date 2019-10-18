@@ -1,7 +1,8 @@
 /**
  * Properties and methods for any solar object (planet, moon, asteroid, etc.).
+ * This is an abstract class, do not create direct SolarObject objects.
  */
-public class SolarObject {
+public abstract class SolarObject {
     public SolarSystem ss;
     public double dist;
     public double dia;
