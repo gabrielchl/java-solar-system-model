@@ -5,14 +5,14 @@ import java.awt.*;
  * Main class. Creates all solar objects and controls their movement.
  */
 public class TheSolarSystem extends SolarSystem {
-    public static int width = 1700;
-    public static int height = 800;
-    public static double speed_multiplier = 0.7;
+    public final static int width = 1700;
+    public final static int height = 800;
+    public final static double speed_multiplier = 0.7;
 
     // all distances and diameters in million km
     // all angles are not really angles, just relative to earth and earth is 1
 
-    public static double solar_system_width = 4495.0;
+    public final static double solar_system_width = 4495.0;
 
     /**
      * Creates the one and only solar system. Sets global settings according to arguments.
@@ -30,7 +30,6 @@ public class TheSolarSystem extends SolarSystem {
      * @param   height  height of the window
      */
     public TheSolarSystem(int width, int height) {
-
         super(width, height); // apply onto super class's constructor
 
         Sun sun = new Sun(this, 0, 1.391, "#F79703");
@@ -63,24 +62,27 @@ public class TheSolarSystem extends SolarSystem {
 
         Moon[] moons = {our_lovely_moon, io, europa, ganymede, callisto, titan};
 
-        Asteroid[] asteroids = new Asteroid[800];
-        for (int i = 0; i < 800; i++) {
+        Asteroid[] asteroids = new Asteroid[950];
+        for (int i = 0; i < asteroids.length; i++) {
             asteroids[i] = new Asteroid(this);
         }
 
-        while(true) { // main loop for the animation
+        JLabel label = new JLabel("test");
+        label.setFont(label.getFont().deriveFont(600.0f));
+        label.setForeground(Color.WHITE);
+        label.setHorizontalAlignment(SwingConstants.CENTER);
+        label.setVerticalAlignment(SwingConstants.CENTER);
+        add(label);
+
+        while (true) { // main loop for the animation
             this.finishedDrawing();
 
+            add(label);
+
             sun.move();
-            for (Planet planet : planets) {
-                planet.move();
-            }
-            for (Moon moon : moons) {
-                moon.move();
-            }
-            for (Asteroid asteroid : asteroids) {
-                asteroid.move();
-            }
+            for (Planet planet : planets) planet.move();
+            for (Moon moon : moons) moon.move();
+            for (Asteroid asteroid : asteroids) asteroid.move();
 
             try {
                 Thread.sleep(10);
