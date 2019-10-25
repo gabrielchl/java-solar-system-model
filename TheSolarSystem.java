@@ -56,12 +56,6 @@ public class TheSolarSystem extends SolarSystem {
 
         Planet neptune = new Planet(this, 4495.0, 0.049244, "#2F73D4", 0.0060975);
 
-        // setup arrays for each type of solar object
-
-        Planet[] planets = {mercury, venus, earth, mars, jupiter, saturn, uranus, neptune};
-
-        Moon[] moons = {our_lovely_moon, io, europa, ganymede, callisto, titan};
-
         Asteroid[] asteroids = new Asteroid[950];
         double asteroid_type;
         for (int i = 0; i < asteroids.length; i++) {
@@ -75,12 +69,14 @@ public class TheSolarSystem extends SolarSystem {
             }
         }
 
+        SolarObject[] solar_objects = {mercury, venus, earth, mars, jupiter, saturn, uranus, neptune,
+            our_lovely_moon, io, europa, ganymede, callisto, titan};
+
         while (true) { // main loop for the animation
             this.finishedDrawing();
 
             sun.move();
-            for (Planet planet : planets) planet.move();
-            for (Moon moon : moons) moon.move();
+            for (SolarObject solar_object : solar_objects) solar_object.move();
             for (Asteroid asteroid : asteroids) asteroid.move();
 
             try {
