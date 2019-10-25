@@ -63,21 +63,20 @@ public class TheSolarSystem extends SolarSystem {
         Moon[] moons = {our_lovely_moon, io, europa, ganymede, callisto, titan};
 
         Asteroid[] asteroids = new Asteroid[950];
+        double asteroid_type;
         for (int i = 0; i < asteroids.length; i++) {
-            asteroids[i] = new Asteroid(this);
+            asteroid_type = Math.random();
+            if (asteroid_type < 0.7) { // asteroid belt
+                asteroids[i] = new AsteroidBelt(this);
+            } else if (asteroid_type < 0.85) { //greeks
+                asteroids[i] = new AsteroidGreek(this);
+            } else { // trojans
+                asteroids[i] = new AsteroidTrojan(this);
+            }
         }
-
-        JLabel label = new JLabel("test");
-        label.setFont(label.getFont().deriveFont(600.0f));
-        label.setForeground(Color.WHITE);
-        label.setHorizontalAlignment(SwingConstants.CENTER);
-        label.setVerticalAlignment(SwingConstants.CENTER);
-        add(label);
 
         while (true) { // main loop for the animation
             this.finishedDrawing();
-
-            add(label);
 
             sun.move();
             for (Planet planet : planets) planet.move();
