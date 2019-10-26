@@ -48,5 +48,5 @@ public abstract class SolarObject {
         return current_ang;
     }
 
-    public void move() {}
+    public abstract void move();
 }
